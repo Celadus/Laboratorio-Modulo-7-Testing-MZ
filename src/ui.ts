@@ -6,6 +6,7 @@ import {
   obtenerUrlCarta,
   damePuntuacion,
   sumaPuntuacion,
+  obtenerEstadoPartida,
 } from "./motor";
 import { partida, setPartida } from "./model";
 
@@ -45,10 +46,10 @@ function invocarBotones(
 }
 
 function revisarMano() {
-  if (partida.puntosTotales === 7.5) {
+  if (obtenerEstadoPartida() === "JUSTO_MAXIMA") {
     ganarPartida();
   }
-  if (partida.puntosTotales > 7.5) {
+  if (obtenerEstadoPartida() === "TE_HAS_PASADO") {
     gameOver();
   }
 }

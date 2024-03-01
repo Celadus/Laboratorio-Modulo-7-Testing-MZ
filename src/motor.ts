@@ -1,5 +1,6 @@
 // motore.ts
-import { partida } from "./model";
+import { partida, EstadoPartida} from "./model";
+
 export function dameNumeroAleatorio(): number {
   return Math.floor(Math.random() * 10) + 1;
 }
@@ -51,4 +52,14 @@ export function damePuntuacion(carta: number) {
 }
 export function sumaPuntuacion(carta: number): number {
   return partida.puntosTotales += carta;
+}
+
+export function obtenerEstadoPartida(): EstadoPartida {
+  if (partida.puntosTotales === 7.5){
+    return "JUSTO_MAXIMA"
+  };
+  if (partida.puntosTotales > 7.5){
+    return "TE_HAS_PASADO"
+  };
+  return "POR_DEBAJO_MAXIMO";
 }
